@@ -87,6 +87,7 @@ const describe = (name, description, prepare) => {
   prepare();
   lock();
   runBeforeTest();
+  return _pm_().variables.get("pit");
 };
 
 const test = (name, description, callback) => {
