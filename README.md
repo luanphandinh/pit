@@ -1,11 +1,22 @@
 # pit
 postman integration test utils
+
+# Caution
+This project is under development, lots of stuff won't work, but the idea is there.
+
+# What
+Make your postman collection testable.
+
+# How it work
+Define your simple script like this(see more at `example/fun_suite.js`):
+
 ```
-const { mock, describe, before, test, runTest } = require("../t");
+const { mock, describe, before, test, log } = require("../t");
+const { extract } = require("../extract");
 
 mock();
 
-describe("Suite name", "Here go the suite description", () => {
+const d = describe("Suite name", "Here go the suite description", () => {
   before("200", () => {
     log("This should call when init");
   });
@@ -23,5 +34,17 @@ describe("Suite name", "Here go the suite description", () => {
   });
 });
 
-runTest();
+console.log(JSON.stringify(extract(d), null, 4));
 ```
+
+Run
+```
+make test
+```
+
+This will automatically export a `postman_collection.json` file in current folder.
+Then use portman to import collection and run.
+
+# TODO
+* Need to add the `t.js` into collection under name of `t`
+* The flow based on implementation on `t.js`

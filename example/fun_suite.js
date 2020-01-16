@@ -1,4 +1,4 @@
-const { mock, describe, before, test, runTest, log } = require("../t");
+const { mock, describe, before, test, log } = require("../t");
 const { extract } = require("../extract");
 
 mock();
@@ -21,7 +21,4 @@ const d = describe("Suite name", "Here go the suite description", () => {
   });
 });
 
-// runTest();
-// runTest();
-// TODO: implement extract for extracting all test that is written into collection.json of postman
-console.log(extract(d));
+console.log(JSON.stringify(extract(d), null, 4));

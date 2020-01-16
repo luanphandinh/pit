@@ -81,7 +81,8 @@ const describe = (name, description, prepare) => {
   init();
   set("suite", {
     name: name,
-    description: description
+    description: description,
+    callback: prepare.toString()
   });
 
   prepare();

@@ -1,0 +1,58 @@
+{
+    "info": {
+        "_postman_id": "11fe7fe3-b6d1-453f-adbc-af5463bf9d5c",
+        "name": "Example Fun Postman",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Suite name",
+            "item": [
+                {
+                    "name": "200",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "const { runTest } = pm.variables.get(\"t\"); runTest()"
+                                ]
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [
+                                    "const { describe, before, test } = pm.variables.get(\"t\");\n",
+                                    "describe(\"Suite name\", \"Here go the suite description\", () => {\n  before(\"200\", () => {\n    log(\"This should call when init\");\n  });\n\n  test(\"200\", \"Test 200 description\", () => {\n    log(\"This test is OK\");\n  });\n\n  before(\"403\", () => {\n    log(\"This should call when init\");\n  });\n\n  test(\"403\", \"Test 403 description\", () => {\n    log(\"This test is not quite OK\");\n  });\n});"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "403",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "const { runTest } = pm.variables.get(\"t\"); runTest()"
+                                ]
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [
+                                    "const { describe, before, test } = pm.variables.get(\"t\");\n",
+                                    "describe(\"Suite name\", \"Here go the suite description\", () => {\n  before(\"200\", () => {\n    log(\"This should call when init\");\n  });\n\n  test(\"200\", \"Test 200 description\", () => {\n    log(\"This test is OK\");\n  });\n\n  before(\"403\", () => {\n    log(\"This should call when init\");\n  });\n\n  test(\"403\", \"Test 403 description\", () => {\n    log(\"This test is not quite OK\");\n  });\n});"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
