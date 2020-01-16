@@ -1,7 +1,4 @@
-# pit
-postman integration test utils
-```
-const { mock, describe, before, test, runTest } = require("../t");
+const { mock, describe, before, test, runTest, log } = require("../t");
 
 mock();
 
@@ -24,4 +21,4 @@ describe("Suite name", "Here go the suite description", () => {
 });
 
 runTest();
-```
+runTest();
