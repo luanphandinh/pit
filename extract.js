@@ -1,5 +1,5 @@
 const extract = describer => {
-  const { suite, tests, schedule } = describer;
+  const { suite, schedule } = describer;
   const pmSuite = {
     name: suite.name,
     item: []

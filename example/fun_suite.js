@@ -1,8 +1,10 @@
-const { mock, describe, before, test, log } = require("../t");
+const fs = require("fs");
+const t = fs.readFileSync("t.js", "utf8");
+
+const { mock, describe, before, test, log } = eval(t);
 const { extract } = require("../extract");
 
 mock();
-
 const d = describe("Suite name", "Here go the suite description", () => {
   before("200", () => {
     log("This should call when init");
