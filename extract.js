@@ -1,34 +1,40 @@
-const extract = describer => {
+const extract = (t, describer) => {
   const { suite, schedule } = describer;
   const pmSuite = {
     name: suite.name,
     item: []
   };
 
-  for (const name of schedule) {
-    const item = {
-      name: name,
-      event: [
-        {
-          listen: "test",
-          script: {
-            exec: ['const { runTest } = pm.variables.get("t"); runTest()']
-          }
-        },
-        {
-          listen: "prerequest",
-          script: {
-            exec: [
-              'const { describe, before, test } = pm.variables.get("t");\n',
-              `describe("${suite.name}", "${suite.description}", ${suite.callback});`
-            ]
-          }
+  const item = {
+    name: suite.name,
+    request: {
+      method: "GET",
+      header: [],
+      url: {
+        raw: "https://google.com",
+        host: ["https://google.com"]
+      }
+    },
+    event: [
+      {
+        listen: "test",
+        script: {
+          exec: ['const { runTest } = eval(pm.variables.get("t"))(); runTest()']
         }
-      ]
-    };
+      },
+      {
+        listen: "prerequest",
+        script: {
+          exec: [
+            'const { describe, before, test } = eval(pm.variables.get("t"))();\n',
+            `describe("${suite.name}", "${suite.description}", ${suite.callback});`
+          ]
+        }
+      }
+    ]
+  };
 
-    pmSuite.item.push(item);
-  }
+  pmSuite.item.push(item);
 
   const collection = {
     info: {
@@ -37,7 +43,13 @@ const extract = describer => {
       schema:
         "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
-    item: [pmSuite]
+    item: [pmSuite],
+    variable: [
+      {
+        key: "t",
+        value: t
+      }
+    ]
   };
 
   return collection;

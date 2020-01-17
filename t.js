@@ -1,5 +1,5 @@
-(function() {
-  let USE_MOCK = false;
+isDescribing => {
+  let USE_MOCK = isDescribing;
   const _postman_storage_mock_ = {};
   _postman_mock_ = {};
   _postman_mock_.setNextRequest = () => {};
@@ -143,6 +143,9 @@
   };
 
   const runBeforeTest = () => {
+    if (USE_MOCK) {
+      return;
+    }
     const test = getCurrentTest();
     if (test.before) {
       log(`Running pre-script for ${test.name}`);
@@ -171,4 +174,4 @@
     runTest: runTest,
     mock: mock
   };
-})();
+};
