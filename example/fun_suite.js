@@ -1,7 +1,4 @@
-const fs = require("fs");
-const t = fs.readFileSync("t.js", "utf8");
-
-const { describe, before, test, log } = eval(t)(true);
+const { describe, before, test } = require("../t")(true);
 const { extract } = require("../extract");
 
 const d = describe("Suite name", "Here go the suite description", () => {
@@ -22,4 +19,4 @@ const d = describe("Suite name", "Here go the suite description", () => {
   });
 });
 
-console.log(JSON.stringify(extract(t, d), null, 4));
+console.log(JSON.stringify(extract(d), null, 4));

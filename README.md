@@ -11,10 +11,7 @@ Make your postman collection testable.
 Define your simple script like this(see more at `example/fun_suite.js`):
 
 ```
-const fs = require("fs");
-const t = fs.readFileSync("t.js", "utf8");
-
-const { describe, before, test, log } = eval(t)(true);
+const { describe, before, test } = require("../t")(true);
 const { extract } = require("../extract");
 
 const d = describe("Suite name", "Here go the suite description", () => {
@@ -35,10 +32,16 @@ const d = describe("Suite name", "Here go the suite description", () => {
   });
 });
 
-console.log(JSON.stringify(extract(t, d), null, 4));
+console.log(JSON.stringify(extract(d), null, 4));
 ```
 
 Run
+If you have `newman` isstalled:
+```
+make test-newman
+```
+
+Manual way:
 ```
 make test
 ```
@@ -48,5 +51,5 @@ Then use portman to import collection and run.
 
 # TODO
 * Able to load all suite from all test files.
-* Right now hacking to get `describe, test` to work by manually `console.log` with `extract(t, suite)`.
+* Right now hacking to get `describe, test` to work by manually `console.log` with `extract(suite)`.
 * Adding request declartion into test files.

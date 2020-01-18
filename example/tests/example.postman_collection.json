@@ -34,7 +34,7 @@
                             "script": {
                                 "exec": [
                                     "const { describe, before, test } = eval(pm.variables.get(\"t\"))();\n",
-                                    "describe(\"Suite name\", \"Here go the suite description\", () => {\n  before(\"200\", () => {\n    console.log(\"This will be called before sending request\");\n  });\n\n  test(\"200\", \"Test 200 description\", () => {\n    pm.response.to.have.status(200);\n  });\n\n  before(\"403\", () => {\n    console.log(\"This should call when init\");\n  });\n\n  test(\"403\", \"This test wil failed be cause return still 200\", () => {\n    pm.response.to.have.status(403);\n  });\n});"
+                                    "describe(\"Suite name\", \"Here go the suite description\", () => {\n  before(\"200\", () => {\n    console.log(\"This will be called before sending request\");\n  });\n\n  test(\"200\", \"Test 200 description\", () => {\n    pm.response.to.have.status(200);\n  });\n\n  before(\"403\", () => {\n    console.log(\"This should call when init\");\n  });\n\n  test(\"403\", \"This test will be failed because return still 200\", () => {\n    pm.response.to.have.status(403);\n  });\n});"
                                 ]
                             }
                         }

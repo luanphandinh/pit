@@ -1,4 +1,4 @@
-isDescribing => {
+module.exports = isDescribing => {
   let USE_MOCK = isDescribing;
   const _postman_storage_mock_ = {};
   _postman_mock_ = {};

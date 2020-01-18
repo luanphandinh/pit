@@ -1,4 +1,8 @@
-const extract = (t, describer) => {
+const fs = require("fs");
+let t = fs.readFileSync("t.js", "utf8");
+t = t.replace("module.exports = ", "");
+
+const extract = describer => {
   const { suite, schedule } = describer;
   const pmSuite = {
     name: suite.name,
