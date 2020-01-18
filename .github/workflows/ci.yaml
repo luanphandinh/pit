@@ -11,5 +11,8 @@ jobs:
     - name: Install newman
       run: sudo npm i -g newman
 
-    - name: Test
+    - name: Test pit
+      run: make t
+
+    - name: Newman
       run: make newman
