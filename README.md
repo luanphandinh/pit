@@ -38,12 +38,12 @@ console.log(JSON.stringify(extract(d), null, 4));
 Run
 If you have `newman` isstalled:
 ```
-make test-newman
+make newman
 ```
 
 Manual way:
 ```
-make test
+make t
 ```
 
 This will automatically export a `postman_collection.json` file in current folder.

@@ -14,9 +14,9 @@
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "https://google.com",
+                            "raw": "{{request_url}}",
                             "host": [
-                                "https://google.com"
+                                "{{request_url}}"
                             ]
                         }
                     },
@@ -34,7 +34,7 @@
                             "script": {
                                 "exec": [
                                     "const { describe, before, test } = eval(pm.variables.get(\"t\"))();\n",
-                                    "describe(\"Suite name\", \"Here go the suite description\", () => {\n  before(\"200\", () => {\n    console.log(\"This will be called before sending request\");\n  });\n\n  test(\"200\", \"Test 200 description\", () => {\n    pm.response.to.have.status(200);\n  });\n\n  before(\"403\", () => {\n    console.log(\"This should call when init\");\n  });\n\n  test(\"403\", \"This test will be failed because return still 200\", () => {\n    pm.response.to.have.status(403);\n  });\n});"
+                                    "describe(\"Suite name\", \"Here go the suite description\", () => {\n  before(\"200\", () => {\n    console.log(\"This will be called before sending request\");\n    console.log(\"{{request_url}} is hard_code, will be more dynamic later\");\n    pm.variables.set(\"request_url\", \"https://google.com\");\n  });\n\n  test(\"200\", \"Test 200 description\", () => {\n    pm.response.to.have.status(200);\n  });\n\n  before(\"404\", () => {\n    console.log(\"This should call when init\");\n    pm.variables.set(\"request_url\", \"https://google.com/404\");\n  });\n\n  test(\"404\", \"Test 404\", () => {\n    pm.response.to.have.status(404);\n  });\n});"
                                 ]
                             }
                         }
