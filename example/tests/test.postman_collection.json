@@ -6,10 +6,10 @@
     },
     "item": [
         {
-            "name": "Suite name",
+            "name": "Let's check spotify",
             "item": [
                 {
-                    "name": "Suite name",
+                    "name": "Let's check spotify",
                     "request": {
                         "method": "GET",
                         "header": [],
@@ -25,7 +25,7 @@
                             "listen": "test",
                             "script": {
                                 "exec": [
-                                    "const { runTest } = eval(pm.variables.get(\"t\"))(); runTest()"
+                                    "const { runTest } = eval(pm.variables.get(\"t\"))();\n runTest();"
                                 ]
                             }
                         },
@@ -34,7 +34,44 @@
                             "script": {
                                 "exec": [
                                     "const { describe, before, test } = eval(pm.variables.get(\"t\"))();\n",
-                                    "describe(\"Suite name\", \"Here go the suite description\", () => {\n  before(\"200\", () => {\n    console.log(\"This will be called before sending request\");\n    console.log(\"{{request_url}} is hard_code, will be more dynamic later\");\n    pm.variables.set(\"request_url\", \"https://google.com\");\n  });\n\n  test(\"200\", \"Test 200 description\", () => {\n    pm.response.to.have.status(200);\n  });\n\n  before(\"404\", () => {\n    console.log(\"This should call when init\");\n    pm.variables.set(\"request_url\", \"https://google.com/404\");\n  });\n\n  test(\"404\", \"Test 404\", () => {\n    pm.response.to.have.status(404);\n  });\n});"
+                                    "describe(\"Let's check spotify\", \"Checking spotify api\", () => {\n  before(\"401\", () => {\n    pm.variables.set(\n      \"request_url\",\n      \"https://api.spotify.com/v1/tracks/2KrxsD86ARO5beq7Q0Drfqa\"\n    );\n  });\n\n  test(\"401\", \"I'm don't have any key so....\", () => {\n    const jsonData = pm.response.json();\n    pm.expect(jsonData.error.status).to.equal(401);\n    pm.expect(jsonData.error.message).to.equal(\"No token provided\");\n  });\n});"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Let's check google",
+            "item": [
+                {
+                    "name": "Let's check google",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{request_url}}",
+                            "host": [
+                                "{{request_url}}"
+                            ]
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "const { runTest } = eval(pm.variables.get(\"t\"))();\n runTest();"
+                                ]
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [
+                                    "const { describe, before, test } = eval(pm.variables.get(\"t\"))();\n",
+                                    "describe(\"Let's check google\", \"Here go the suite description\", () => {\n    before(\"200\", () => {\n      console.log(\"This will be called before sending request\");\n      console.log(\"{{request_url}} is hard_code, will be more dynamic later\");\n      pm.variables.set(\"request_url\", \"https://google.com\");\n    });\n\n    test(\"200\", \"Test 200 description\", () => {\n      pm.response.to.have.status(200);\n    });\n\n    before(\"404\", () => {\n      console.log(\"This should call when init\");\n      pm.variables.set(\"request_url\", \"https://google.com/404\");\n    });\n\n    test(\"404\", \"Test 404\", () => {\n      pm.response.to.have.status(404);\n    });\n  });"
                                 ]
                             }
                         }

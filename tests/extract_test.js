@@ -1,15 +1,8 @@
-const { describe, before, test, runTest } = require("./t")(true);
+const { getSuites } = require("../lib/extract");
 const assert = require("./assert");
 
-const actual = describe("Suite name", "Here go the suite description", () => {
-  before("200", () => {});
-
-  test("200", "Test 200 description", () => {});
-
-  before("404", () => {});
-
-  test("404", "Test 404", () => {});
-});
+const path = require("path");
+suites = getSuites(path.join(__dirname, "suites"));
 
 const expected = {
   suite: {
@@ -36,13 +29,4 @@ const expected = {
   lock: true
 };
 
-assert.Equal(JSON.stringify(expected), JSON.stringify(actual));
-
-runTest();
-expected.schedule = ["404"];
-assert.Equal(JSON.stringify(expected), JSON.stringify(actual));
-
-runTest();
-expected.schedule = [];
-expected.lock = false;
-assert.Equal(JSON.stringify(expected), JSON.stringify(actual));
+assert.Equal(JSON.stringify([expected]), JSON.stringify(suites));

@@ -1,6 +1,7 @@
-suite:
-	node test/fun_suite.js > test/tests/test.postman_collection.json
 t:
-	node t_test.js
+	node tests/t_test.js
+	node tests/extract_test.js
+suite:
+	node example/collection.js > example/tests/test.postman_collection.json
 newman: suite
-	newman run test/tests/test.postman_collection.json
+	newman run example/tests/test.postman_collection.json

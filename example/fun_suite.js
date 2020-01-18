@@ -1,16 +1,3 @@
-# pit
-postman integration test utils
-
-# Caution
-This project is under development.
-
-# What
-Make your postman collection testable.
-
-# How it work
-Define your simple script like this(see more at `example/fun_suite.js`):
-
-```
 const { describe, before, test } = require("../lib/t")(true);
 
 module.exports = describe(
@@ -37,20 +24,3 @@ module.exports = describe(
     });
   }
 );
-```
-
-Run
-`exctractColleciton` from `example/collection.js` will find all `_suite` files and the combine into `postman_collection/v2.1` file.
-```
-node example/collection.js > example/tests/test.postman_collection.json
-```
-
-If you have `newman` isstalled:
-```
-newman run example/tests/test.postman_collection.json
-```
-
-# TODO
-* Collection declartion, right now only have suite declartion.
-* Adding request declartion into test files.
-* Adding variables file.
