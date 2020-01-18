@@ -1,7 +1,6 @@
 const { describe, before, test } = require("../lib/t")(true);
-const { extract } = require("../lib/extract");
 
-const d = describe("Suite name", "Here go the suite description", () => {
+module.exports = describe("Suite name", "Here go the suite description", () => {
   before("200", () => {
     console.log("This will be called before sending request");
     console.log("{{request_url}} is hard_code, will be more dynamic later");
@@ -22,4 +21,4 @@ const d = describe("Suite name", "Here go the suite description", () => {
   });
 });
 
-console.log(JSON.stringify(extract(d), null, 4));
+// console.log(JSON.stringify(extract(d), null, 4));
