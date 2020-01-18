@@ -15,8 +15,8 @@ const extract = describer => {
       method: "GET",
       header: [],
       url: {
-        raw: "https://google.com",
-        host: ["https://google.com"]
+        raw: "{{request_url}}",
+        host: ["{{request_url}}"]
       }
     },
     event: [

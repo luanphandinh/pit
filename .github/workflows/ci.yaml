@@ -1,0 +1,15 @@
+name: pit
+
+on: [push]
+
+jobs:
+  pit-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Install newman
+      run: sudo npm i -g newman
+
+    - name: Test
+      run: make newman
