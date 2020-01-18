@@ -2,7 +2,7 @@
 postman integration test utils
 
 # Caution
-This project is under development, lots of stuff won't work, but the idea is there.
+This project is under development.
 
 # What
 Make your postman collection testable.
@@ -17,18 +17,21 @@ const { extract } = require("../extract");
 const d = describe("Suite name", "Here go the suite description", () => {
   before("200", () => {
     console.log("This will be called before sending request");
+    console.log("{{request_url}} is hard_code, will be more dynamic later");
+    pm.variables.set("request_url", "https://google.com");
   });
 
   test("200", "Test 200 description", () => {
     pm.response.to.have.status(200);
   });
 
-  before("403", () => {
+  before("404", () => {
     console.log("This should call when init");
+    pm.variables.set("request_url", "https://google.com/404");
   });
 
-  test("403", "This test will be failed because return still 200", () => {
-    pm.response.to.have.status(403);
+  test("404", "Test 404", () => {
+    pm.response.to.have.status(404);
   });
 });
 
@@ -43,7 +46,7 @@ make newman
 
 Manual way:
 ```
-make t
+make suite
 ```
 
 This will automatically export a `postman_collection.json` file in current folder.

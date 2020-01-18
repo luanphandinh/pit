@@ -1,4 +1,6 @@
-t:
+suite:
 	node test/fun_suite.js > test/tests/test.postman_collection.json
-newman: t
+t:
+	node t_test.js
+newman: suite
 	newman run test/tests/test.postman_collection.json
