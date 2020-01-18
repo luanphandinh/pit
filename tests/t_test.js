@@ -1,4 +1,4 @@
-const { describe, before, test, runTest } = require("./t")(true);
+const { describe, before, test, runTest } = require("../lib/t")(true);
 const assert = require("./assert");
 
 const actual = describe("Suite name", "Here go the suite description", () => {

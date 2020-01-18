@@ -25,7 +25,7 @@
                             "listen": "test",
                             "script": {
                                 "exec": [
-                                    "const { runTest } = eval(pm.variables.get(\"t\"))(); runTest()"
+                                    "const { runTest } = eval(pm.variables.get(\"t\"))();\n runTest();"
                                 ]
                             }
                         },

@@ -1,5 +1,5 @@
-const { describe, before, test } = require("../t")(true);
-const { extract } = require("../extract");
+const { describe, before, test } = require("../lib/t")(true);
+const { extract } = require("../lib/extract");
 
 const d = describe("Suite name", "Here go the suite description", () => {
   before("200", () => {
