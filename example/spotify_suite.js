@@ -8,7 +8,7 @@ module.exports = describe("Let's check spotify", "Checking spotify api", () => {
     );
   });
 
-  test("401", "I'm don't have any key so....", () => {
+  test("401", "I don't have any key so....", () => {
     const jsonData = pm.response.json();
     pm.expect(jsonData.error.status).to.equal(401);
     pm.expect(jsonData.error.message).to.equal("No token provided");

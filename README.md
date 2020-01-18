@@ -8,7 +8,7 @@ This project is under development.
 Make your postman collection testable.
 
 # How it work
-Define your simple script like this(see more at `example/fun_suite.js`):
+Define your simple script like this(see more at `example/google_suite.js` or `example/spotify_suite.js`):
 
 ```
 const { describe, before, test } = require("../lib/t")(true);
