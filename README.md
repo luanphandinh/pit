@@ -1,16 +1,23 @@
 # pit
-postman integration test utils
+A [postman](https://www.getpostman.com) integration test utils.\
+Taking advantage of postman's `pre-request script` and `test-script`.\
+This utils help `describe and test` your collection with simple syntax.
 
 # Caution
 This project is under development.
+### Dangers:
+Since postman doesn't have clear `"scopes"` like javascript variables, instead have their own [pm.variables](https://learning.getpostman.com/docs/postman/variables-and-environments/variables/).\
+In order to make scripts work, there will be a few `eval()` functions in `lib/t.js`, feel free and inspect the code.\
+It's only `eval()` what you code, so please make sure you don't add any danger or malicious script into `describe, test or before` code blocks.
 
-# What
-Make your postman collection testable.
+# Flow diagram
+Showing how this utils interact with postman.\
+Implementing....
 
 # How it work
 Define your simple script like this(see more at `example/google_suite.js` or `example/spotify_suite.js`):
 
-```
+```javascript
 const { describe, before, test } = require("../lib/t")(true);
 
 module.exports = describe(
@@ -45,7 +52,7 @@ Run
 node example/collection.js > example/tests/test.postman_collection.json
 ```
 
-If you have `newman` isstalled:
+If you have [newman](https://www.npmjs.com/package/newman) installed:
 ```
 newman run example/tests/test.postman_collection.json
 ```
