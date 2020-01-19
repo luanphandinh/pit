@@ -10,9 +10,8 @@ Since postman doesn't have clear `"scopes"` like javascript variables, instead h
 In order to make scripts work, there will be a few `eval()` functions in `lib/t.js`, feel free and inspect the code.\
 It's only `eval()` what you code, so please make sure you don't add any danger or malicious script into `describe, test or before` code blocks.
 
-# Flow diagram
-Showing how this utils interact with postman.\
-Implementing....
+# [Flow diagram](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=pit.svg#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1LAMukZHOzEI1DuxBVMTw8yL-L2ArNVDI%26export%3Ddownload)
+# ![diagram](https://github.com/luanphandinh/pit/blob/master/flow.svg)
 
 # How it work
 Define your simple script like this(see more at `example/google_suite.js` or `example/spotify_suite.js`):
