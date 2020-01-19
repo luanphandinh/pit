@@ -33,7 +33,8 @@ const expected = {
     }
   },
   schedule: ["200", "404"],
-  lock: true
+  lock: true,
+  request: {}
 };
 
 assert.Equal(JSON.stringify(expected), JSON.stringify(actual));
