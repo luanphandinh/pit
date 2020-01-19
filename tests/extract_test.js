@@ -9,7 +9,7 @@ const expected = {
     name: "Suite name",
     description: "Here go the suite description",
     callback:
-      '() => {\n  before("200", () => {});\n\n  test("200", "Test 200 description", () => {});\n\n  before("404", () => {});\n\n  test("404", "Test 404", () => {});\n}'
+      '() => {\n  sendRequest({\n    method: "GET",\n    url: {\n      raw: "https://request_something"\n    }\n  });\n\n  before("200", () => {});\n\n  test("200", "Test 200 description", () => {});\n\n  before("404", () => {});\n\n  test("404", "Test 404", () => {});\n}'
   },
   tests: {
     "200": {
@@ -27,7 +27,7 @@ const expected = {
   },
   schedule: ["200", "404"],
   lock: true,
-  request: {}
+  request: { method: "GET", url: { raw: "https://request_something" } }
 };
 
 assert.Equal(JSON.stringify([expected]), JSON.stringify(suites));

@@ -1,7 +1,14 @@
-const { describe, before, test, runTest } = require("../../lib/t")(true);
+const { describe, before, test, sendRequest } = require("../../lib/t")(true);
 const assert = require("../assert");
 
 module.exports = describe("Suite name", "Here go the suite description", () => {
+  sendRequest({
+    method: "GET",
+    url: {
+      raw: "https://request_something"
+    }
+  });
+
   before("200", () => {});
 
   test("200", "Test 200 description", () => {});
