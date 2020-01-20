@@ -1,11 +1,19 @@
-const { describe, before, test } = require("../lib/t")(true);
+const { describe, before, test, sendRequest } = require("../lib/t")(true);
 
 module.exports = describe("Let's check spotify", "Checking spotify api", () => {
+  sendRequest({
+    method: "GET",
+    header: [],
+    url: {
+      raw: "{{spotify_api}}/{{version}}/{{endpoint}}",
+      host: ["{{spotify_api}}/{{version}}"]
+    }
+  });
+
   before("401", () => {
-    pm.variables.set(
-      "request_url",
-      "https://api.spotify.com/v1/tracks/2KrxsD86ARO5beq7Q0Drfqa"
-    );
+    pm.variables.set("spotify_api", "https://api.spotify.com");
+    pm.variables.set("version", "v1");
+    pm.variables.set("endpoint", "tracks/2KrxsD86ARO5beq7Q0Drfqa");
   });
 
   test("401", "I don't have any key so....", () => {
