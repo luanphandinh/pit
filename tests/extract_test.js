@@ -29,7 +29,7 @@ const funSuiteItem = {
           listen: "prerequest",
           script: {
             exec: [
-              'const { describe, before, test, sendRequest } = eval(pm.variables.get("t"))();\n',
+              'const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get("t"))();\n',
               'describe("Suite name", "Here go the suite description", () => {\n  sendRequest({\n    method: "GET",\n    url: {\n      raw: "https://request_something"\n    }\n  });\n\n  dependOn("Have dependencies suite");\n\n  before("200", () => {});\n\n  test("200", "Test 200 description", () => {});\n\n  before("404", () => {});\n\n  test("404", "Test 404", () => {});\n});'
             ]
           }
@@ -65,7 +65,7 @@ const haveDependenciesSuite = {
           listen: "prerequest",
           script: {
             exec: [
-              'const { describe, before, test, sendRequest } = eval(pm.variables.get("t"))();\n',
+              'const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get("t"))();\n',
               'describe("Have dependencies suite", "", () => {\n  test("401", "Test 401 description");\n});'
             ]
           }
@@ -76,6 +76,6 @@ const haveDependenciesSuite = {
 };
 
 assert.Equal(
-  JSON.stringify([funSuiteItem, haveDependenciesSuite]),
+  JSON.stringify([haveDependenciesSuite, funSuiteItem]),
   JSON.stringify(collection.item)
 );

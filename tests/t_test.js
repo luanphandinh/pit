@@ -50,7 +50,7 @@ const expected = {
   schedule: ["200", "404"],
   lock: true,
   request: { method: "GET", url: { raw: "https://request_something" } },
-  depend: ["Have dependencies suite"]
+  dependencies: ["Have dependencies suite"]
 };
 
 assert.Equal(JSON.stringify(expected), JSON.stringify(actual));
