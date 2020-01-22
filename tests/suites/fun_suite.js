@@ -1,5 +1,10 @@
-const { describe, before, test, sendRequest } = require("../../lib/t")(true);
-const assert = require("../assert");
+const {
+  describe,
+  before,
+  test,
+  dependOn,
+  sendRequest
+} = require("../../lib/t")(true);
 
 module.exports = describe("Suite name", "Here go the suite description", () => {
   sendRequest({
@@ -8,6 +13,8 @@ module.exports = describe("Suite name", "Here go the suite description", () => {
       raw: "https://request_something"
     }
   });
+
+  dependOn("Have dependencies suite");
 
   before("200", () => {});
 
