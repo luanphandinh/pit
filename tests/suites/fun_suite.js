@@ -6,7 +6,7 @@ const {
   sendRequest
 } = require("../../lib/t")(true);
 
-module.exports = describe("Suite name", "Here go the suite description", () => {
+module.exports = describe("Suite name", () => {
   sendRequest({
     method: "GET",
     url: {

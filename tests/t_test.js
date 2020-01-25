@@ -9,7 +9,7 @@ const {
 
 const assert = require("./assert");
 
-const actual = describe("Suite name", "Here go the suite description", () => {
+const actual = describe("Suite name", () => {
   sendRequest({
     method: "GET",
     url: {
@@ -30,7 +30,6 @@ const actual = describe("Suite name", "Here go the suite description", () => {
 
 const expected = {
   name: "Suite name",
-  description: "Here go the suite description",
   callback:
     '() => {\n  sendRequest({\n    method: "GET",\n    url: {\n      raw: "https://request_something"\n    }\n  });\n\n  dependOn("Have dependencies suite");\n\n  before("200", () => {});\n\n  test("200", "Test 200 description", () => {});\n\n  before("404", () => {});\n\n  test("404", "Test 404", () => {});\n}',
   tests: {

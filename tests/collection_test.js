@@ -15,7 +15,7 @@ const collection = extractCollection({
 });
 
 const funSuiteItem = {
-  name: "Suite name",
+  name: "fun_suite",
   request: {
     method: "GET",
     header: [],
@@ -35,7 +35,7 @@ const funSuiteItem = {
       script: {
         exec: [
           'const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get("t"))();\n',
-          'describe("Suite name", "Here go the suite description", () => {\n  sendRequest({\n    method: "GET",\n    url: {\n      raw: "https://request_something"\n    }\n  });\n\n  dependOn("Have dependencies suite");\n\n  before("200", () => {});\n\n  test("200", "Test 200 description", () => {});\n\n  before("404", () => {});\n\n  test("404", "Test 404", () => {});\n});'
+          'describe("Suite name", () => {\n  sendRequest({\n    method: "GET",\n    url: {\n      raw: "https://request_something"\n    }\n  });\n\n  dependOn("Have dependencies suite");\n\n  before("200", () => {});\n\n  test("200", "Test 200 description", () => {});\n\n  before("404", () => {});\n\n  test("404", "Test 404", () => {});\n});'
         ]
       }
     }
@@ -43,7 +43,7 @@ const funSuiteItem = {
 };
 
 const haveDependenciesSuite = {
-  name: "Have dependencies suite",
+  name: "have_depend_suite",
   request: {
     method: "GET",
     header: [],
@@ -64,7 +64,7 @@ const haveDependenciesSuite = {
       script: {
         exec: [
           'const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get("t"))();\n',
-          'describe("Have dependencies suite", "", () => {\n  test("401", "Test 401 description");\n});'
+          'describe("Have dependencies suite", () => {\n  test("401", "Test 401 description");\n});'
         ]
       }
     }
@@ -72,7 +72,7 @@ const haveDependenciesSuite = {
 };
 
 const nestedSuite1 = {
-  name: "Nested suite",
+  name: "nested_suite",
   request: {
     method: "GET",
     header: [],
@@ -93,7 +93,7 @@ const nestedSuite1 = {
       script: {
         exec: [
           'const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get("t"))();\n',
-          'describe("Nested suite", "", () => {\n  test("401", "description");\n});'
+          'describe("Nested suite", () => {\n  test("401", "description");\n});'
         ]
       }
     }
@@ -101,7 +101,7 @@ const nestedSuite1 = {
 };
 
 const nestedSuite2 = {
-  name: "Nested 2 suite",
+  name: "nested2_suite",
   request: {
     method: "GET",
     header: [],
@@ -122,7 +122,7 @@ const nestedSuite2 = {
       script: {
         exec: [
           'const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get("t"))();\n',
-          'describe("Nested 2 suite", "", () => {\n  test("422", "description");\n});'
+          'describe("Nested 2 suite", () => {\n  test("422", "description");\n});'
         ]
       }
     }

@@ -19,30 +19,26 @@ Define your simple script like this(see more at `example/google_suite.js` or `ex
 ```javascript
 const { describe, before, test } = require("../lib/t")(true);
 
-module.exports = describe(
-  "Let's check google",
-  "Here go the suite description",
-  () => {
-    before("200", () => {
-      console.log("This will be called before sending request");
-      console.log("{{request_url}} is hard_code, will be more dynamic later");
-      pm.variables.set("request_url", "https://google.com");
-    });
+module.exports = describe("Let's check google", () => {
+  before("200", () => {
+    console.log("This will be called before sending request");
+    console.log("{{request_url}} is hard_code, will be more dynamic later");
+    pm.variables.set("request_url", "https://google.com");
+  });
 
-    test("200", "Test 200 description", () => {
-      pm.response.to.have.status(200);
-    });
+  test("200", "Test 200 description", () => {
+    pm.response.to.have.status(200);
+  });
 
-    before("404", () => {
-      console.log("This should call when init");
-      pm.variables.set("request_url", "https://google.com/404");
-    });
+  before("404", () => {
+    console.log("This should call when init");
+    pm.variables.set("request_url", "https://google.com/404");
+  });
 
-    test("404", "Test 404", () => {
-      pm.response.to.have.status(404);
-    });
-  }
-);
+  test("404", "Test 404", () => {
+    pm.response.to.have.status(404);
+  });
+});
 ```
 
 # Run
@@ -62,7 +58,7 @@ module.exports = {
       "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   suites: {
-    includes: ["_suite"], // patterns for `suite` file, could be anything.
+    includes: ["Suite.js"], // patterns for `suite` file, could be anything.
     paths: [path.join(__dirname)] // paths where `suite` file should be placed.
   }
 };
