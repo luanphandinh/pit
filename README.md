@@ -45,10 +45,27 @@ module.exports = describe(
 );
 ```
 
-Run
-`exctractColleciton` from `example/collection.js` will find all `_suite` files and the combine into `postman_collection/v2.1` file.
+# Run
 ```
-node example/collection.js > example/tests/test.postman_collection.json
+cd example && node ../lib/extract.js
+```
+This `extract.js` will use the config from `.pit_collection.js` file to generate `.postman_collection.json` into `tests` folder.
+
+`.pit_collection.js`
+```javascript
+const path = require("path");
+
+module.exports = {
+  info: {
+    name: "Example Fun Postman",
+    schema:
+      "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  suites: {
+    includes: ["_suite"], // patterns for `suite` file, could be anything.
+    paths: [path.join(__dirname)] // paths where `suite` file should be placed.
+  }
+};
 ```
 
 If you have [newman](https://www.npmjs.com/package/newman) installed:
@@ -57,6 +74,5 @@ newman run example/tests/test.postman_collection.json
 ```
 
 # TODO
-* Collection declartion, right now only have suite declartion.
-* Adding request declartion into test files.
 * Adding variables file.
+* Improve `pit_collection.json`.
