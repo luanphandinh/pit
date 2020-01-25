@@ -21,9 +21,15 @@ const Equal = (expected, actual) => {
 
 const ArrayEqual = (expected, actual) => {
   if (expected.length !== actual.length) failed(expected, actual);
-  expected.map((val, index) =>
-    val !== actual[index] ? failed(expected, actual) : true
-  );
+  expected.map((val, index) => {
+    if (Array.isArray(val)) {
+      ArrayEqual(val, actual[index]);
+    } else if (val !== actual[index]) {
+      failed(expected, actual);
+    }
+
+    return true;
+  });
 };
 
 module.exports = {
