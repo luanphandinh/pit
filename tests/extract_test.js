@@ -71,8 +71,7 @@ const haveDependenciesSuite = {
   ]
 };
 
-// @TODO: This need to be created inside 'Nested Suite'(folder name) item.
-const nestedSuite = {
+const nestedSuite1 = {
   name: "Nested suite",
   request: {
     method: "GET",
@@ -101,7 +100,41 @@ const nestedSuite = {
   ]
 };
 
+const nestedSuite2 = {
+  name: "Nested 2 suite",
+  request: {
+    method: "GET",
+    header: [],
+    url: {
+      raw: "{{request_url}}",
+      host: ["{{request_url}}"]
+    }
+  },
+  event: [
+    {
+      listen: "test",
+      script: {
+        exec: ['const { runTest } = eval(pm.variables.get("t"))();\nrunTest();']
+      }
+    },
+    {
+      listen: "prerequest",
+      script: {
+        exec: [
+          'const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get("t"))();\n',
+          'describe("Nested 2 suite", "", () => {\n  test("422", "description");\n});'
+        ]
+      }
+    }
+  ]
+};
+
+const nestedSuites = {
+  name: "Nested Suite",
+  item: [nestedSuite2, nestedSuite1]
+};
+
 assert.Equal(
-  JSON.stringify([haveDependenciesSuite, nestedSuite, funSuiteItem]),
+  JSON.stringify([nestedSuites, funSuiteItem, haveDependenciesSuite]),
   JSON.stringify(collection.item)
 );

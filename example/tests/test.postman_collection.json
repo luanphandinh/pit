@@ -5,6 +5,43 @@
     },
     "item": [
         {
+            "name": "Github",
+            "item": [
+                {
+                    "name": "200",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{request_url}}",
+                            "host": [
+                                "{{request_url}}"
+                            ]
+                        }
+                    },
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "const { runTest } = eval(pm.variables.get(\"t\"))();\nrunTest();"
+                                ]
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "exec": [
+                                    "const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get(\"t\"))();\n",
+                                    "describe(\"200\", \"Checking github api\", () => {\n  before(\"200\", () => {\n    pm.variables.set(\n      \"request_url\",\n      \"https://api.github.com/users/luanphandinh\"\n    );\n  });\n\n  test(\"200\", \"Should be able to get my information from github\", () => {\n    pm.response.to.have.status(200);\n    const jsonData = pm.response.json();\n    pm.expect(jsonData.name).to.equal(\"Luan Phan\");\n  });\n});"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Let's check google",
             "request": {
                 "method": "GET",
