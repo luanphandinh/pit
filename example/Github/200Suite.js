@@ -1,6 +1,6 @@
 const { describe, before, test } = require("../../lib/t")(true);
 
-module.exports = describe("200", "Checking github api", () => {
+module.exports = describe("200", () => {
   before("200", () => {
     pm.variables.set(
       "request_url",

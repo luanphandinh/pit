@@ -1,6 +1,6 @@
 const { describe, before, test, sendRequest } = require("../lib/t")(true);
 
-module.exports = describe("Let's check spotify", "Checking spotify api", () => {
+module.exports = describe("Let's check spotify", () => {
   sendRequest({
     method: "GET",
     header: [],
