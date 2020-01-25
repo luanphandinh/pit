@@ -1,4 +1,4 @@
-const { extractCollection } = require("../lib/extract");
+const { extractCollection } = require("../lib/collection");
 const path = require("path");
 
 const collection = extractCollection({
