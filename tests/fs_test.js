@@ -20,15 +20,15 @@ const expected2Levels = [
   path.resolve(__dirname, "fs_mock_files/b_suite.js")
 ];
 
-assert.ArrayEqual(
+assert.Equal(
   expectedAllLevels,
   fs.findFiles(path.join(__dirname, "fs_mock_files"))
 );
-assert.ArrayEqual(
+assert.Equal(
   expected1Levels,
   fs.findFiles(path.join(__dirname, "fs_mock_files"), 1)
 );
-assert.ArrayEqual(
+assert.Equal(
   expected2Levels,
   fs.findFiles(path.join(__dirname, "fs_mock_files"), 2)
 );
@@ -40,10 +40,7 @@ const treeFiles = [
   "b_suite.js"
 ];
 
-assert.ArrayEqual(
-  treeFiles,
-  fs.getFilesTree(path.join(__dirname, "fs_mock_files"))
-);
+assert.Equal(treeFiles, fs.getFilesTree(path.join(__dirname, "fs_mock_files")));
 
 const treeFilesFullDirPath = [
   path.join(__dirname, "fs_mock_files"),
@@ -56,7 +53,7 @@ const treeFilesFullDirPath = [
   "b_suite.js"
 ];
 
-assert.ArrayEqual(
+assert.Equal(
   treeFilesFullDirPath,
   fs.getFilesTree(path.join(__dirname, "fs_mock_files"), 10, {
     fullDirPath: true
@@ -74,7 +71,7 @@ const treeFilesFullFilePath = [
   path.resolve(__dirname, "fs_mock_files/b_suite.js")
 ];
 
-assert.ArrayEqual(
+assert.Equal(
   treeFilesFullFilePath,
   fs.getFilesTree(path.join(__dirname, "fs_mock_files"), 10, {
     fullFilePath: true
