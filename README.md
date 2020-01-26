@@ -36,7 +36,7 @@ module.exports = {
   name: "Example Fun Postman",
   suites: {
     includes: ["Suite.js"], // patterns for `suite` file, could be anything.
-    paths: [path.join(__dirname)] // paths where `suite` file should be placed.
+    dirs: [path.join(__dirname)] // paths where `suite` file should be placed.
   }
 };
 ```
