@@ -1,22 +1,23 @@
 const verbose = (expected, actual) => {
-  console.log("expected[+] / actual[-]");
-  console.log("+");
+  console.log("\033[0;32mexpected[+]\033[0m / \033[0;31mactual[-]\033[0m");
+  console.log("\033[0;32m+");
   console.log(expected);
-  console.log("-");
+  console.log("\033[0m");
+  console.log("\033[0;31m-");
   console.log(actual);
+  console.log("\033[0m");
 };
 
 const failed = (expected, actual) => {
   verbose(expected, actual);
-  process.exit(1);
+  throw new Error("failed!");
 };
 
 const Equal = (expected, actual) => {
   if (expected === actual) {
     return true;
   }
-  verbose(expected, actual);
-  process.exit(1);
+  failed(expected, actual);
 };
 
 const ArrayEqual = (expected, actual) => {
