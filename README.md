@@ -14,7 +14,7 @@ It's only `eval()` what you code, so please make sure you don't add any danger o
 # ![diagram](https://github.com/luanphandinh/pit/blob/master/flow.svg)
 
 # How it work
-Define your simple script like this(see more at `example/google_suite.js` or `example/spotify_suite.js`):
+Define your simple script like this(see more at `example/googleSuite.js` or `example/spotifySuite.js`):
 
 ```javascript
 const { describe, before, test } = require("pits");
@@ -52,11 +52,7 @@ This `extract.js` will use the config from `.pit_collection.js` file to generate
 const path = require("path");
 
 module.exports = {
-  info: {
-    name: "Example Fun Postman",
-    schema:
-      "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
+  name: "Example Fun Postman",
   suites: {
     includes: ["Suite.js"], // patterns for `suite` file, could be anything.
     paths: [path.join(__dirname)] // paths where `suite` file should be placed.
