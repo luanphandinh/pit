@@ -4,20 +4,47 @@ Taking advantage of postman's `pre-request script` and `test-script`.\
 This utils help `describe and test` your collection with simple syntax.
 
 # Caution
-This project is under development.
-### Dangers:
 Since postman doesn't have clear `"scopes"` like javascript variables, instead have their own [pm.variables](https://learning.getpostman.com/docs/postman/variables-and-environments/variables/).\
 In order to make scripts work, there will be a few `eval()` functions in `lib/t.js`, feel free and inspect the code.\
 It's only `eval()` what you code, so please make sure you don't add any danger or malicious script into `describe, test or before` code blocks.
 
-# [Flow diagram](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=pit.svg#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1LAMukZHOzEI1DuxBVMTw8yL-L2ArNVDI%26export%3Ddownload)
-# ![diagram](https://github.com/luanphandinh/pit/blob/master/flow.svg)
+# Install
+```
+npm i pits
+```
 
-# How it work
-Define your simple script like this(see more at `example/google_suite.js` or `example/spotify_suite.js`):
+# Project structure ([more on example](https://github.com/luanphandinh/pits/tree/master/example))
+```
+src
+  |__GitHubApi
+  |     |__GetUserSuite.js
+  |     |__OtherSuite.js
+  |__googleSuite.js
+  |__spotifySuite.js
+  |
+  |__.pit_collection.js
+  |__package.json
+```
 
+# Suite declaration
+
+`.pit_collection.js`
 ```javascript
-const { describe, before, test } = require("../lib/t")(true);
+const path = require("path");
+
+module.exports = {
+  name: "Example Fun Postman",
+  suites: {
+    includes: ["Suite.js"], // patterns for `suite` file, could be anything.
+    paths: [path.join(__dirname)] // paths where `suite` file should be placed.
+  }
+};
+```
+
+Define your simple script like
+[example/googleSuite.js](https://github.com/luanphandinh/pits/blob/master/example/googleSuite.js)
+```javascript
+const { describe, before, test } = require("pits");
 
 module.exports = describe("Let's check google", () => {
   before("200", () => {
@@ -43,31 +70,17 @@ module.exports = describe("Let's check google", () => {
 
 # Run
 ```
-cd example && node ../lib/extract.js
+node -e 'require("pits").extract()'
 ```
-This `extract.js` will use the config from `.pit_collection.js` file to generate `.postman_collection.json` into `tests` folder.
-
-`.pit_collection.js`
-```javascript
-const path = require("path");
-
-module.exports = {
-  info: {
-    name: "Example Fun Postman",
-    schema:
-      "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  suites: {
-    includes: ["Suite.js"], // patterns for `suite` file, could be anything.
-    paths: [path.join(__dirname)] // paths where `suite` file should be placed.
-  }
-};
-```
+This `extract()` function will use the config from `.pit_collection.js` file to generate `.postman_collection.json` into `tests` folder.
 
 If you have [newman](https://www.npmjs.com/package/newman) installed:
 ```
-newman run example/tests/test.postman_collection.json
+newman run tests/test.postman_collection.json
 ```
+
+# [Flow diagram](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=pit.svg#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1LAMukZHOzEI1DuxBVMTw8yL-L2ArNVDI%26export%3Ddownload)
+# ![diagram](https://github.com/luanphandinh/pit/blob/master/flow.svg)
 
 # TODO
 * Adding variables file.
