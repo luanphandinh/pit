@@ -1,0 +1,29 @@
+{
+  "name": "pits",
+  "version": "1.0.0",
+  "description": "Postman integration test utils.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "make t"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luanphandinh/pits.git"
+  },
+  "keywords": [
+    "test",
+    "postman",
+    "newman",
+    "postman-integration",
+    "integration-testing"
+  ],
+  "author": "Luan Phan <luanphandinh@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luanphandinh/pits/issues"
+  },
+  "homepage": "https://github.com/luanphandinh/pits#readme"
+}
