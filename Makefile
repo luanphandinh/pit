@@ -9,4 +9,4 @@ links:
 suite:
 	cd example && node -e 'require("pits").extract()'
 newman: suite
-	newman run example/tests/test.postman_collection.json
+	newman run example/test.postman_collection.json

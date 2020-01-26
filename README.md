@@ -72,11 +72,11 @@ module.exports = describe("Let's check google", () => {
 ```
 node -e 'require("pits").extract()'
 ```
-This `extract()` function will use the config from `.pit_collection.js` file to generate `.postman_collection.json` into `tests` folder.
+This `extract()` function will use the config from `.pit_collection.js` file to generate `.postman_collection.json` into current folder.
 
 If you have [newman](https://www.npmjs.com/package/newman) installed:
 ```
-newman run tests/test.postman_collection.json
+newman run test.postman_collection.json
 ```
 
 # [Flow diagram](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=pit.svg#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1LAMukZHOzEI1DuxBVMTw8yL-L2ArNVDI%26export%3Ddownload)
