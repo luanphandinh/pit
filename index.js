@@ -1,7 +1,11 @@
-const t = require("./lib/t");
-const extract = require("./lib/extract");
+const { describe, test, sendRequest, before, dependOn } = require("./lib/t")(
+  true
+);
 
 module.exports = {
-  t: t,
-  extract: extract
+  describe,
+  test,
+  sendRequest,
+  before,
+  dependOn
 };

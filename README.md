@@ -17,7 +17,7 @@ It's only `eval()` what you code, so please make sure you don't add any danger o
 Define your simple script like this(see more at `example/google_suite.js` or `example/spotify_suite.js`):
 
 ```javascript
-const { describe, before, test } = require("../lib/t")(true);
+const { describe, before, test } = require("pits");
 
 module.exports = describe("Let's check google", () => {
   before("200", () => {

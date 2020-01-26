@@ -1,4 +1,4 @@
-const { describe, before, test } = require("../lib/t")(true);
+const { describe, before, test } = require("../index");
 
 module.exports = describe("Let's check google", () => {
   before("200", () => {

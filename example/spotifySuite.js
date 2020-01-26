@@ -1,4 +1,4 @@
-const { describe, before, test, sendRequest } = require("../lib/t")(true);
+const { describe, before, test, sendRequest } = require("../index");
 
 module.exports = describe("Let's check spotify", () => {
   sendRequest({
