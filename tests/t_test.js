@@ -52,13 +52,13 @@ const expected = {
   dependencies: ["Have dependencies suite"]
 };
 
-assert.Equal(JSON.stringify(expected), JSON.stringify(actual));
+assert.Equal(expected, actual);
 
 runTest();
 expected.schedule = ["404"];
-assert.Equal(JSON.stringify(expected), JSON.stringify(actual));
+assert.Equal(expected, actual);
 
 runTest();
 expected.schedule = [];
 expected.lock = false;
-assert.Equal(JSON.stringify(expected), JSON.stringify(actual));
+assert.Equal(expected, actual);

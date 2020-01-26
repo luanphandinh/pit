@@ -135,6 +135,6 @@ const nestedSuites = {
 };
 
 assert.Equal(
-  JSON.stringify([nestedSuites, funSuiteItem, haveDependenciesSuite]),
-  JSON.stringify(collection.item)
+  [nestedSuites, funSuiteItem, haveDependenciesSuite],
+  collection.item
 );
