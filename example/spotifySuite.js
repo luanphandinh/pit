@@ -1,4 +1,4 @@
-const { describe, before, test, sendRequest } = require("../index");
+const { describe, before, test, sendRequest } = require("pits");
 
 module.exports = describe("Let's check spotify", () => {
   sendRequest({

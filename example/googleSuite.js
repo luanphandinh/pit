@@ -1,4 +1,4 @@
-const { describe, before, test } = require("../index");
+const { describe, before, test } = require("pits");
 
 module.exports = describe("Let's check google", () => {
   before("200", () => {

@@ -15,4 +15,6 @@ jobs:
       run: make t
 
     - name: Newman
-      run: make newman
+      run: |
+        sudo make links
+        make newman
