@@ -6,7 +6,7 @@ const collection = extractCollection({
   name: "Example Fun Postman",
   suites: {
     includes: ["_suite"],
-    paths: [path.join(__dirname, "suites")]
+    dirs: [path.join(__dirname, "suites")]
   }
 });
 
