@@ -33,7 +33,7 @@
                             "script": {
                                 "exec": [
                                     "const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get(\"t\"))();\n",
-                                    "describe(\"200\", () => {\n  before(\"200\", () => {\n    pm.variables.set(\n      \"request_url\",\n      \"https://api.github.com/users/luanphandinh\"\n    );\n  });\n\n  test(\"200\", \"Should be able to get my information from github\", () => {\n    pm.response.to.have.status(200);\n    const jsonData = pm.response.json();\n    pm.expect(jsonData.name).to.equal(\"Luan Phan\");\n  });\n});"
+                                    "describe(\"GetUserSuite\", () => {\n  before(\"200\", () => {\n    pm.variables.set(\n      \"request_url\",\n      \"https://api.github.com/users/luanphandinh\"\n    );\n  });\n\n  test(\"200\", \"Should be able to get my information from github\", () => {\n    pm.response.to.have.status(200);\n    const jsonData = pm.response.json();\n    pm.expect(jsonData.name).to.equal(\"Luan Phan\");\n  });\n});"
                                 ]
                             }
                         }
@@ -67,7 +67,7 @@
                     "script": {
                         "exec": [
                             "const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get(\"t\"))();\n",
-                            "describe(\"Let's check google\", () => {\n  before(\"200\", () => {\n    console.log(\"This will be called before sending request\");\n    console.log(\"{{request_url}} is hard_code, will be more dynamic later\");\n    pm.variables.set(\"request_url\", \"https://google.com\");\n  });\n\n  test(\"200\", \"Test 200 description\", () => {\n    pm.response.to.have.status(200);\n  });\n\n  before(\"404\", () => {\n    console.log(\"This should call when init\");\n    pm.variables.set(\"request_url\", \"https://google.com/404\");\n  });\n\n  test(\"404\", \"Test 404\", () => {\n    pm.response.to.have.status(404);\n  });\n});"
+                            "describe(\"googleSuite\", () => {\n  before(\"200\", () => {\n    console.log(\"This will be called before sending request\");\n    console.log(\"{{request_url}} is hard_code, will be more dynamic later\");\n    pm.variables.set(\"request_url\", \"https://google.com\");\n  });\n\n  test(\"200\", \"Test 200 description\", () => {\n    pm.response.to.have.status(200);\n  });\n\n  before(\"404\", () => {\n    console.log(\"This should call when init\");\n    pm.variables.set(\"request_url\", \"https://google.com/404\");\n  });\n\n  test(\"404\", \"Test 404\", () => {\n    pm.response.to.have.status(404);\n  });\n});"
                         ]
                     }
                 }
@@ -99,7 +99,7 @@
                     "script": {
                         "exec": [
                             "const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get(\"t\"))();\n",
-                            "describe(\"Let's check spotify\", () => {\n  sendRequest({\n    method: \"GET\",\n    header: [],\n    url: {\n      raw: \"{{spotify_api}}/{{version}}/{{endpoint}}\",\n      host: [\"{{spotify_api}}/{{version}}\"]\n    }\n  });\n\n  before(\"401\", () => {\n    pm.variables.set(\"spotify_api\", \"https://api.spotify.com\");\n    pm.variables.set(\"version\", \"v1\");\n    pm.variables.set(\"endpoint\", \"tracks/2KrxsD86ARO5beq7Q0Drfqa\");\n  });\n\n  test(\"401\", \"I don't have any key so....\", () => {\n    const jsonData = pm.response.json();\n    pm.expect(jsonData.error.status).to.equal(401);\n    pm.expect(jsonData.error.message).to.equal(\"No token provided\");\n  });\n});"
+                            "describe(\"spotifySuite\", () => {\n  sendRequest({\n    method: \"GET\",\n    header: [],\n    url: {\n      raw: \"{{spotify_api}}/{{version}}/{{endpoint}}\",\n      host: [\"{{spotify_api}}/{{version}}\"]\n    }\n  });\n\n  before(\"401\", () => {\n    pm.variables.set(\"spotify_api\", \"https://api.spotify.com\");\n    pm.variables.set(\"version\", \"v1\");\n    pm.variables.set(\"endpoint\", \"tracks/2KrxsD86ARO5beq7Q0Drfqa\");\n  });\n\n  test(\"401\", \"I don't have any key so....\", () => {\n    const jsonData = pm.response.json();\n    pm.expect(jsonData.error.status).to.equal(401);\n    pm.expect(jsonData.error.message).to.equal(\"No token provided\");\n  });\n});"
                         ]
                     }
                 }

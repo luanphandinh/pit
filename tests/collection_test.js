@@ -31,7 +31,7 @@ const funSuiteItem = {
       script: {
         exec: [
           'const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get("t"))();\n',
-          'describe("Suite name", () => {\n  sendRequest({\n    method: "GET",\n    url: {\n      raw: "https://request_something"\n    }\n  });\n\n  dependOn("Have dependencies suite");\n\n  before("200", () => {});\n\n  test("200", "Test 200 description", () => {});\n\n  before("404", () => {});\n\n  test("404", "Test 404", () => {});\n});'
+          'describe("fun_suite", () => {\n  sendRequest({\n    method: "GET",\n    url: {\n      raw: "https://request_something"\n    }\n  });\n\n  dependOn("Have dependencies suite");\n\n  before("200", () => {});\n\n  test("200", "Test 200 description", () => {});\n\n  before("404", () => {});\n\n  test("404", "Test 404", () => {});\n});'
         ]
       }
     }
@@ -60,7 +60,7 @@ const haveDependenciesSuite = {
       script: {
         exec: [
           'const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get("t"))();\n',
-          'describe("Have dependencies suite", () => {\n  test("401", "Test 401 description");\n});'
+          'describe("have_depend_suite", () => {\n  test("401", "Test 401 description");\n});'
         ]
       }
     }
@@ -89,7 +89,7 @@ const nestedSuite1 = {
       script: {
         exec: [
           'const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get("t"))();\n',
-          'describe("Nested suite", () => {\n  test("401", "description");\n});'
+          'describe("nested_suite", () => {\n  test("401", "description");\n});'
         ]
       }
     }
@@ -118,7 +118,7 @@ const nestedSuite2 = {
       script: {
         exec: [
           'const { describe, before, test, sendRequest, dependOn } = eval(pm.variables.get("t"))();\n',
-          'describe("Nested 2 suite", () => {\n  test("422", "description");\n});'
+          'describe("nested2_suite", () => {\n  test("422", "description");\n});'
         ]
       }
     }
